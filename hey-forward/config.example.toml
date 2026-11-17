@@ -1,0 +1,18 @@
+# hey-forward rules. Copy to ~/.config/hey-forward/config.toml
+# (or /etc/hey-forward/config.toml under systemd) and edit.
+
+# How often HEY is asked for new mail.
+poll_interval = "1m"
+
+# Mail that surfaces late — the daemon was down, or its sender sat in the
+# Screener — is still forwarded if it is no older than this.
+lookback = "3d"
+
+# Mail sent to `alias` goes on to everyone in `to`. One block per alias.
+[[forward]]
+alias = "you+family@hey.com"
+to = ["partner@example.com"]
+
+[[forward]]
+alias = "you+bills@hey.com"
+to = ["partner@example.com", "accountant@example.com"]
