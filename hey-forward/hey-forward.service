@@ -1,0 +1,31 @@
+[Unit]
+Description=Forward HEY mail sent to +aliases
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/hey-forward run
+User=hey-forward
+# /etc/hey-forward/config.toml and /var/lib/hey-forward, found without flags.
+ConfigurationDirectory=hey-forward
+StateDirectory=hey-forward
+StateDirectoryMode=0700
+Restart=on-failure
+RestartSec=30
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

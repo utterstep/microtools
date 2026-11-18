@@ -1,0 +1,21 @@
+[workspace]
+resolver = "3"
+members = ["hey-forward"]
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.88"
+license = "MIT"
+authors = ["Vlad Stepanov"]
+repository = "https://github.com/utterstep/microtools"
+publish = false
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+
+[profile.release]
+lto = "thin"
+strip = true
